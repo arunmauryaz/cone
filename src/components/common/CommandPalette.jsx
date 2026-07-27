@@ -1,7 +1,7 @@
 /* CommandPalette.jsx */
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, LayoutDashboard, TrendingUp, ShoppingCart, BarChart2, Package, Wallet, Gavel, PieChart, Trophy, Settings } from 'lucide-react';
+import { Search, LayoutDashboard, TrendingUp, ShoppingCart, BarChart2, Package, Wallet, PieChart, Settings } from 'lucide-react';
 import { useMarket } from '../../context/MarketContext.jsx';
 import { fmtPrice } from '../../utils/formatting.js';
 
@@ -12,9 +12,7 @@ const PAGES = [
   { label: 'Positions',   path: '/positions',    icon: BarChart2 },
   { label: 'Holdings',    path: '/holdings',     icon: Package },
   { label: 'Funds',       path: '/funds',        icon: Wallet },
-  { label: 'Bids & IPO',  path: '/bids',         icon: Gavel },
   { label: 'Analytics',   path: '/analytics',    icon: PieChart },
-  { label: 'Leaderboard', path: '/leaderboard',  icon: Trophy },
   { label: 'Settings',    path: '/settings',     icon: Settings },
 ];
 

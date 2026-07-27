@@ -14,49 +14,49 @@ function WatchlistRow({ instrumentKey, onRemove, onBuy, onSell, onChart }) {
   const price = useLivePrice(instrumentKey);
   const stock = EQUITY_STOCKS.find(s => s.instrumentKey === instrumentKey) || INDEX_STOCKS.find(s => s.instrumentKey === instrumentKey);
   const [hovered, setHovered] = useState(false);
-  const prevLtp = useRef(null);
-  const [flashClass, setFlashClass] = useState('');
-
-  useEffect(() => {
-    if (price?.ltp && prevLtp.current !== null && prevLtp.current !== price.ltp) {
-      setFlashClass(price.ltp > prevLtp.current ? 'flash-up' : 'flash-down');
-      setTimeout(() => setFlashClass(''), 650);
-    }
-    prevLtp.current = price?.ltp ?? null;
-  }, [price?.ltp]);
 
   if (!stock) return null;
   const ltp = price?.ltp ?? stock.basePrice;
   const chg = price?.changePercent ?? 0;
   const isUp = chg >= 0;
 
+  // Permanent sleek glass gradient backgrounds
+  const gradientBg = isUp
+    ? 'linear-gradient(90deg, rgba(16, 185, 129, 0.12) 0%, rgba(15, 15, 26, 0.4) 100%)'
+    : 'linear-gradient(90deg, rgba(239, 68, 68, 0.12) 0%, rgba(15, 15, 26, 0.4) 100%)';
+
+  const hoverBg = isUp
+    ? 'linear-gradient(90deg, rgba(16, 185, 129, 0.22) 0%, rgba(15, 15, 26, 0.7) 100%)'
+    : 'linear-gradient(90deg, rgba(239, 68, 68, 0.22) 0%, rgba(15, 15, 26, 0.7) 100%)';
+
   return (
     <div
-      className={flashClass}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        display:'flex', alignItems:'center', padding:'8px 12px', cursor:'pointer',
-        borderBottom:'1px solid rgba(255,255,255,0.04)', transition:'background 150ms',
-        background: hovered ? 'var(--bg-card-hover)' : 'transparent', borderRadius: hovered ? 'var(--radius-sm)' : 0,
+        display: 'flex', alignItems: 'center', padding: '10px 12px', cursor: 'pointer',
+        borderBottom: '1px solid var(--border-glass)',
+        borderLeft: `3px solid ${isUp ? 'var(--color-buy)' : 'var(--color-sell)'}`,
+        background: hovered ? hoverBg : gradientBg,
+        transition: 'all 200ms ease', margin: '3px 6px', borderRadius: 'var(--radius-sm)',
       }}
     >
       <div style={{ flex:1, minWidth:0 }} onClick={onChart}>
-        <div style={{ fontSize:13, fontWeight:600 }}>{stock.tradingsymbol}</div>
-        <div style={{ fontSize:11, color:'var(--text-muted)' }}>{stock.exchange} · {stock.sector}</div>
+        <div style={{ fontSize:13, fontWeight:600, color:'var(--text-primary)' }}>{stock.tradingsymbol}</div>
+        <div style={{ fontSize:11, color:'var(--text-muted)' }}>{stock.exchange} · {stock.sector || 'Index'}</div>
       </div>
       {hovered ? (
         <div style={{ display:'flex', gap:4 }}>
-          <button onClick={onBuy}  style={{ padding:'3px 10px', background:'var(--color-buy)',  color:'#fff', border:'none', borderRadius:4, fontSize:11, fontWeight:700, cursor:'pointer' }}>B</button>
-          <button onClick={onSell} style={{ padding:'3px 10px', background:'var(--color-sell)', color:'#fff', border:'none', borderRadius:4, fontSize:11, fontWeight:700, cursor:'pointer' }}>S</button>
-          <button onClick={onChart} style={{ padding:'3px 6px', background:'rgba(255,255,255,0.08)', color:'var(--text-secondary)', border:'none', borderRadius:4, fontSize:11, cursor:'pointer' }}><BarChart2 size={12}/></button>
-          {onRemove && <button onClick={onRemove} style={{ padding:'3px 6px', background:'rgba(239,68,68,0.12)', color:'var(--color-sell)', border:'none', borderRadius:4, fontSize:11, cursor:'pointer' }}><X size={12}/></button>}
+          <button onClick={onBuy}  style={{ padding:'4px 10px', background:'var(--color-buy)',  color:'#fff', border:'none', borderRadius:4, fontSize:11, fontWeight:700, cursor:'pointer' }}>B</button>
+          <button onClick={onSell} style={{ padding:'4px 10px', background:'var(--color-sell)', color:'#fff', border:'none', borderRadius:4, fontSize:11, fontWeight:700, cursor:'pointer' }}>S</button>
+          <button onClick={onChart} style={{ padding:'4px 8px', background:'rgba(255,255,255,0.1)', color:'var(--text-secondary)', border:'none', borderRadius:4, fontSize:11, cursor:'pointer' }}><BarChart2 size={12}/></button>
+          {onRemove && <button onClick={onRemove} style={{ padding:'4px 8px', background:'rgba(239,68,68,0.2)', color:'var(--color-sell)', border:'none', borderRadius:4, fontSize:11, cursor:'pointer' }}><X size={12}/></button>}
         </div>
       ) : (
         <div style={{ textAlign:'right' }}>
           <div style={{ fontFamily:"'Space Grotesk',monospace", fontWeight:700, fontSize:13 }}>C {fmtPrice(ltp)}</div>
           <div style={{ fontSize:11, color: isUp ? 'var(--color-buy)' : 'var(--color-sell)', fontWeight:600 }}>
-            {isUp ? '▲' : '▼'} {Math.abs(chg).toFixed(2)}%
+            {isUp ? '▲ +' : '▼ '}{chg.toFixed(2)}%
           </div>
         </div>
       )}

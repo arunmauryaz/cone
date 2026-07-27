@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard, TrendingUp, ClipboardList, Layers, BookOpen,
-  Wallet, Gavel, BarChart2, Trophy, Settings, ChevronLeft, ChevronRight,
+  Wallet, BarChart2, Settings, ChevronLeft, ChevronRight,
   Zap,
 } from 'lucide-react';
 
@@ -14,9 +14,7 @@ const NAV_ITEMS = [
   { to: '/positions',   icon: Layers,          label: 'Positions' },
   { to: '/holdings',    icon: BookOpen,        label: 'Holdings' },
   { to: '/funds',       icon: Wallet,          label: 'Funds' },
-  { to: '/bids',        icon: Gavel,           label: 'Bids' },
   { to: '/analytics',   icon: BarChart2,       label: 'Analytics' },
-  { to: '/leaderboard', icon: Trophy,          label: 'Leaderboard' },
 ];
 
 const STORAGE_KEY = 'cone_sidebar_collapsed';

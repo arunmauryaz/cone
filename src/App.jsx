@@ -31,9 +31,7 @@ const Orders       = lazy(() => import('./pages/Orders.jsx'));
 const Positions    = lazy(() => import('./pages/Positions.jsx'));
 const Holdings     = lazy(() => import('./pages/Holdings.jsx'));
 const Funds        = lazy(() => import('./pages/Funds.jsx'));
-const Bids         = lazy(() => import('./pages/Bids.jsx'));
 const Analytics    = lazy(() => import('./pages/Analytics.jsx'));
-const Leaderboard  = lazy(() => import('./pages/Leaderboard.jsx'));
 const Settings     = lazy(() => import('./pages/Settings.jsx'));
 const Notifications = lazy(() => import('./pages/Notifications.jsx'));
 
@@ -74,9 +72,7 @@ function AppRoutes() {
           <Route path="/positions"  element={<Suspense fallback={<PageFallback />}><Positions /></Suspense>} />
           <Route path="/holdings"   element={<Suspense fallback={<PageFallback />}><Holdings /></Suspense>} />
           <Route path="/funds"      element={<Suspense fallback={<PageFallback />}><Funds /></Suspense>} />
-          <Route path="/bids"       element={<Suspense fallback={<PageFallback />}><Bids /></Suspense>} />
           <Route path="/analytics"  element={<Suspense fallback={<PageFallback />}><Analytics /></Suspense>} />
-          <Route path="/leaderboard" element={<Suspense fallback={<PageFallback />}><Leaderboard /></Suspense>} />
           <Route path="/settings"   element={<Suspense fallback={<PageFallback />}><Settings /></Suspense>} />
           <Route path="/notifications" element={<Suspense fallback={<PageFallback />}><Notifications /></Suspense>} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />

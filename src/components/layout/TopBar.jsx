@@ -13,9 +13,7 @@ const PAGE_TITLES = {
   '/positions':     'Positions',
   '/holdings':      'Holdings',
   '/funds':         'Funds',
-  '/bids':          'Bids & IPO',
   '/analytics':     'Analytics',
-  '/leaderboard':   'Leaderboard',
   '/settings':      'Settings',
   '/notifications': 'Notifications',
 };

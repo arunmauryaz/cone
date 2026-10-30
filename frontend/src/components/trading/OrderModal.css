@@ -1,0 +1,51 @@
+.order-ticket-backdrop { position: fixed; inset: calc(var(--ticker-height) + var(--topbar-height)) 0 0; z-index: 2000; background: transparent; display: flex; justify-content: flex-end; }
+.order-ticket { --ticket-accent: var(--accent-primary); width: 380px; max-width: 100%; height: 100%; display: flex; flex-direction: column; background: var(--bg-surface); border-left: 1px solid var(--border-subtle); border-radius: 0; box-shadow: none; overflow: hidden; font-size: 12px; animation: ticket-enter 160ms ease-out; }
+.ticket-header { padding: 18px 20px; display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border-subtle); }
+.ticket-header h2 { margin: 0 0 8px; font-size: 15px; }
+.ticket-header h2 small { margin-left: 6px; font-size: 10px; font-weight: 400; color: var(--text-secondary); }
+.ticket-quote { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; color: var(--text-primary); font-size: 14px; }
+.ticket-tabs { display: flex; border-bottom: 1px solid var(--border-subtle); }
+.ticket-tabs button { flex: 1; background: transparent; border: 0; border-bottom: 2px solid transparent; padding: 12px; color: var(--text-secondary); font-weight: 600; cursor: pointer; }
+.ticket-tabs button[aria-pressed=true] { color: var(--text-primary); border-bottom-color: var(--text-primary); }
+.ticket-form { flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+.ticket-body { flex: 1; min-height: 0; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 20px; }
+.ticket-side { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ticket-side button { background: transparent; border: 1px solid var(--border-subtle); color: var(--text-secondary); padding: 8px; border-radius: var(--radius-sm); cursor: pointer; font-weight: 600; }
+.ticket-side button[aria-pressed=true] { color: #fff; }
+.is-buy .ticket-side button[aria-pressed=true] { background: var(--button-buy); border-color: var(--button-buy); }
+.is-sell .ticket-side button[aria-pressed=true] { background: var(--button-sell); border-color: var(--button-sell); }
+.ticket-help { margin: 0; color: var(--text-secondary); font-size: 11px; line-height: 1.6; }
+.ticket-fields { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+.ticket-fields > label, .ticket-body .input { min-width: 0; }
+.ticket-body label { color: var(--text-secondary); line-height: 1.5; }
+.ticket-body .input { width: 100%; margin-top: 6px; height: 40px; font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
+.ticket-body input:disabled { opacity: .5; cursor: not-allowed; }
+.ticket-stepper { display: flex; height: 40px; margin-top: 6px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); overflow: hidden; }
+.ticket-stepper button { border: 0; background: var(--bg-surface-raised); color: var(--text-secondary); width: 30px; display: grid; place-items: center; cursor: pointer; }
+.ticket-stepper input { min-width: 0; width: 100%; background: var(--bg-input); border: 0; color: var(--text-primary); text-align: center; font-family: 'JetBrains Mono', monospace; appearance: textfield; }
+.ticket-stepper input::-webkit-inner-spin-button { appearance: none; }
+.order-ticket input[type=radio], .order-ticket input[type=checkbox] { accent-color: var(--ticket-accent); }
+.ticket-quick-options { display: flex; gap: 24px; }
+.ticket-quick-options label, .ticket-products label, .ticket-types label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.ticket-products, .ticket-types { border: 0; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ticket-products legend, .ticket-types legend { color: var(--text-secondary); font-size: 11px; margin-bottom: 10px; }
+.ticket-products small { color: var(--text-tertiary); font-size: 10px; }
+.ticket-footer { flex-shrink: 0; padding: 16px 20px; border-top: 1px solid var(--border-subtle); background: var(--bg-surface); }
+.ticket-funds { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 10px; font-variant-numeric: tabular-nums; }
+.ticket-funds div { display: flex; flex-direction: column; gap: 4px; }
+.ticket-funds span { color: var(--text-secondary); font-size: 10px; }
+.ticket-funds strong { font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+.ticket-actions { display: grid; grid-template-columns: 1fr 1.3fr; gap: 10px; margin-top: 16px; }
+.ticket-actions .btn { min-height: 38px; justify-content: center; }
+.ticket-error { margin: 0; color: var(--price-down); background: var(--price-down-dim); border-radius: var(--radius-sm); padding: 10px; font-size: 12px; }
+.ticket-review { flex: 1; padding: 20px; overflow-y: auto; }
+.ticket-review h3 { margin: 0 0 16px; }
+.ticket-review dl { margin: 0 0 16px; }
+.ticket-review dl div { display: flex; justify-content: space-between; gap: 18px; border-bottom: 1px solid var(--border-subtle); padding: 12px 0; }
+.ticket-review dt { color: var(--text-secondary); }
+.ticket-review dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+.ticket-review .ticket-error { margin-top: 12px; }
+.order-ticket button:focus-visible, .order-ticket input:focus-visible { outline: 2px solid var(--ticket-accent); outline-offset: -2px; }
+@keyframes ticket-enter { from { transform: translateX(100%); } to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) { .order-ticket { animation: none; } }
+@media (max-width: 600px) { .order-ticket { width: 100%; } }

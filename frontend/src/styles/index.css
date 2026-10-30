@@ -1,0 +1,299 @@
+/* ============================================================
+   CONE — Professional Trading Terminal Design System
+   src/styles/index.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root,
+[data-theme="pitch-black"] {
+  color-scheme: dark;
+  --bg-base: #000000;
+  --bg-surface: #000000;
+  --bg-surface-raised: #101010;
+  --bg-primary: var(--bg-base);
+  --bg-secondary: var(--bg-surface);
+  --bg-card: var(--bg-surface);
+  --bg-card-hover: var(--bg-surface-raised);
+  --bg-glass: var(--bg-surface);
+  --bg-input: #0A0A0A;
+  --border-subtle: #222222;
+  --border-glass: var(--border-subtle);
+  --border-active: #4F8CFF;
+  --border-input: var(--border-subtle);
+  --text-primary: #EEEEEE;
+  --text-secondary: #A0A0A0;
+  --text-tertiary: #858585;
+  --text-muted: var(--text-tertiary);
+  --accent-primary: #4F8CFF;
+  --accent-secondary: #3676ED;
+  --accent-dim: rgba(79,140,255,.10);
+  --accent-glow: transparent;
+  --gradient-primary: var(--accent-primary);
+}
+[data-theme="charcoal-dark"] {
+  color-scheme: dark;
+  --bg-base: #181818;
+  --bg-surface: #181818;
+  --bg-surface-raised: #222222;
+  --bg-input: #181818;
+  --border-subtle: #303030;
+  --text-primary: #EEEEEE;
+  --text-secondary: #AAAAAA;
+  --text-tertiary: #929292;
+}
+[data-theme="light"] {
+  color-scheme: light;
+  --bg-base: #FFFFFF;
+  --bg-surface: #FFFFFF;
+  --bg-surface-raised: #F6F6F6;
+  --bg-input: #FFFFFF;
+  --border-subtle: #E5E5E5;
+  --border-active: #2563EB;
+  --text-primary: #171717;
+  --text-secondary: #606060;
+  --text-tertiary: #737373;
+  --accent-primary: #2563EB;
+  --accent-secondary: #1D4ED8;
+  --accent-dim: rgba(37,99,235,.07);
+}
+[data-theme="light"] .alert-info { color: #1D4ED8; }
+[data-theme="light"] .alert-warning { color: #875300; }
+[data-theme="light"] .alert-danger { color: #B52E2E; }
+[data-theme="light"] .alert-success { color: #116647; }
+
+:root {
+  --button-buy:        #16805B;
+  --button-buy-hover:  #116647;
+  --button-sell:       #D43B3B;
+  --button-sell-hover: #B52E2E;
+  /* PRICE DIRECTION (TradingView Muted Teal & Coral) */
+  --price-up:          #26A69A;
+  --price-down:        #EF5350;
+  --price-up-dim:      rgba(38, 166, 154, 0.12);
+  --price-down-dim:    rgba(239, 83, 80, 0.12);
+
+  /* ALIASES FOR TRADING SIDES */
+  --color-buy:         var(--price-up);
+  --color-buy-dim:     var(--price-up-dim);
+  --color-sell:        var(--price-down);
+  --color-sell-dim:    var(--price-down-dim);
+  --color-neutral:     #38BDF8;
+  --color-neutral-dim: rgba(56, 189, 248, 0.12);
+
+  /* GRADIENTS (Subtle, non-distracting) */
+  --gradient-card:     var(--bg-surface);
+  --gradient-buy:      rgba(38, 166, 154, 0.08);
+  --gradient-sell:     rgba(239, 83, 80, 0.08);
+
+  /* SPACING (8px Base Grid: 4, 8, 12, 16, 24, 32px) */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  12px;
+  --space-lg:  16px;
+  --space-xl:  24px;
+  --space-2xl: 32px;
+
+  /* BORDER RADIUS (Standardized & Restrained) */
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   6px;
+  --radius-lg:   8px;
+  --radius-xl:   12px;
+  --radius-full: 9999px;
+
+  /* SHADOWS (Flat / Minimal Elevation) */
+  --shadow-card:       none;
+  --shadow-glow:       none;
+  --shadow-glow-buy:   none;
+  --shadow-glow-sell:  none;
+
+  /* LAYOUT DIMENSIONS */
+  --sidebar-width:     180px;
+  --sidebar-collapsed: 64px;
+  --topbar-height:     56px;
+  --ticker-height:     0px;
+  --order-panel-width: 340px;
+}
+
+/* ============================================================
+   GLOBAL RESET
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 13px;
+  scroll-behavior: smooth;
+  background-color: var(--bg-base);
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.font-mono,
+.tabular-nums,
+[data-numeric="true"],
+.font-numeric {
+  font-family: 'JetBrains Mono', 'Space Grotesk', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.text-primary   { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted     { color: var(--text-tertiary); }
+.text-buy, .text-up     { color: var(--price-up); }
+.text-sell, .text-down  { color: var(--price-down); }
+.text-neutral   { color: var(--color-neutral); }
+.text-accent    { color: var(--accent-primary); }
+
+/* ============================================================
+   FLAT TERMINAL SURFACES (Replaces Glass Cards)
+   ============================================================ */
+.glass-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.glass-card:hover {
+  background: var(--bg-surface);
+  border-color: var(--border-subtle);
+}
+
+.glass-card.hoverable:hover {
+  border-color: var(--border-subtle);
+  background: var(--bg-surface-raised);
+}
+
+.glass-card.gradient {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+}
+
+.glass-card.glow {
+  box-shadow: none;
+}
+
+/* ============================================================
+   SCROLLBAR (Subtle hairline)
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #232830;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3A4250;
+}
+
+/* ============================================================
+   LINKS
+   ============================================================ */
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+a:hover {
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   UTILS
+   ============================================================ */
+.flex         { display: flex; }
+.flex-col     { flex-direction: column; }
+.items-center { align-items: center; }
+.items-start  { align-items: flex-start; }
+.justify-between { justify-content: space-between; }
+.justify-center  { justify-content: center; }
+.gap-xs { gap: var(--space-xs); }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+.w-full  { width: 100%; }
+.cursor-pointer { cursor: pointer; }
+.select-none { user-select: none; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+
+.replay-setup { border-top:1px solid var(--border-subtle); padding-top:20px; display:grid; gap:14px; }
+.replay-setup h3 {font-size:14px;font-weight:500;}
+.replay-search-results {max-height:220px;overflow:auto;border:1px solid var(--border-subtle);}
+.replay-search-results button {display:block;width:100%;padding:9px;text-align:left;}
+.replay-search-results button:hover {background:var(--bg-surface-raised);}
+.replay-selected {display:flex;gap:8px;flex-wrap:wrap;}
+.replay-selected button {padding:5px 8px;border:1px solid var(--border-subtle);font-size:12px;}
+
+.replay-badge { display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border:1px solid var(--accent-primary);border-radius:3px;color:var(--accent-primary); }
+.replay-workspaces { display:grid;gap:20px; }
+.workspace-heading { display:flex;align-items:center;justify-content:space-between;gap:16px; }
+.workspace-heading .settings-heading {margin:0 0 6px;}
+.workspace-heading p,.workspace-card p {font-size:12px;color:var(--text-secondary);}
+.workspace-form,.workspace-results {display:grid;gap:16px;padding:20px;border:1px solid var(--border-subtle);border-radius:4px;background:var(--bg-surface);}
+.workspace-form label {display:grid;gap:7px;font-size:12px;}
+.workspace-dates {display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.workspace-list {display:grid;gap:12px;}
+.workspace-card {display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 20px;border:1px solid var(--border-subtle);border-radius:4px;}
+.workspace-card h3 {font-size:14px;font-weight:600;margin-bottom:8px;}
+.workspace-current {margin-left:10px;font-size:10px;font-weight:400;color:var(--accent-primary);}
+.workspace-status {display:inline-block;font-size:11px;color:var(--text-secondary);margin-top:6px;text-transform:capitalize;}
+.workspace-summary {display:flex;gap:16px;margin-top:12px;font-size:12px;font-variant-numeric:tabular-nums;}
+.workspace-actions {display:flex;align-items:center;gap:12px;}
+.workspace-actions button {display:inline-flex;align-items:center;gap:5px;padding:6px;font-size:11px;color:var(--text-secondary);}
+.workspace-actions button:hover {background:var(--bg-surface-raised);color:var(--text-primary);}
+.workspace-metrics {display:flex;gap:30px;padding:15px 0;border-block:1px solid var(--border-subtle);font-size:12px;color:var(--text-secondary);}
+.workspace-metrics strong {display:block;margin-top:8px;color:var(--text-primary);font-size:17px;font-weight:500;}
+.workspace-results h4 {font-size:13px;margin-bottom:12px;}
+.workspace-settings-link {font-size:12px;color:var(--accent-primary);}
+@media(max-width:650px){.workspace-card{align-items:stretch;flex-direction:column;}.workspace-actions{justify-content:flex-end;}.workspace-dates{grid-template-columns:1fr;}.workspace-heading{flex-wrap:wrap;}.workspace-actions button span{display:none;}}
+
+.paper-label.replay-badge {display:inline-flex;}
+@media(max-width:600px){.app-topbar:has(.replay-badge) .account-trigger span{display:none;}}

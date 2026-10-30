@@ -55,15 +55,15 @@ The React terminal uses HTTP/WebSocket. Future desktop or TUI clients can use th
 Install **Rust stable** with native build tools and **Node.js 22.12+**.
 
 ```sh
-git clone https://github.com/arunmauryaz/cone-paper-trading.git
-cd cone-paper-trading
+git clone https://github.com/arunmauryaz/cone.git
+cd cone
 cargo run --manifest-path backend/Cargo.toml -p cone-backend --locked
 ```
 
 In a second terminal:
 
 ```sh
-cd cone-paper-trading/frontend
+cd cone/frontend
 npm ci
 npm run dev
 ```

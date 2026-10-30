@@ -1,0 +1,110 @@
+/* ============================================================
+   CONE — Animations
+   src/styles/animations.css
+   ============================================================ */
+
+/* --- Price Flash (Text pulse) --- */
+@keyframes priceFlashGreen {
+  0%   { color: #10b981; }
+  100% { color: inherit; }
+}
+@keyframes priceFlashRed {
+  0%   { color: #ef4444; }
+  100% { color: inherit; }
+}
+.flash-up   { animation: priceFlashGreen 600ms ease forwards; }
+.flash-down { animation: priceFlashRed   600ms ease forwards; }
+
+/* --- Page Enter --- */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter { animation: fadeSlideUp 250ms ease forwards; }
+
+/* --- Modal Open --- */
+@keyframes modalOpen {
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+.modal-enter { animation: modalOpen 200ms ease forwards; }
+
+/* --- Slide In Right (Order Panel) --- */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.slide-in-right { animation: slideInRight 200ms ease forwards; }
+
+/* --- Slide In Bottom (Mobile Sheet) --- */
+@keyframes slideInBottom {
+  from { opacity: 0; transform: translateY(60px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.slide-in-bottom { animation: slideInBottom 220ms ease forwards; }
+
+/* --- Marquee Ticker --- */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-track {
+  animation: marquee 60s linear infinite;
+  will-change: transform;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* --- Spin (Spinner) --- */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spin { animation: spin 0.7s linear infinite; }
+
+/* --- Pulse (Market Status dot) --- */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+.pulse { animation: pulse 2s ease-in-out infinite; }
+
+/* --- Blob background (Auth pages) --- */
+@keyframes blobMove1 {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33%       { transform: translate(30px,-30px) scale(1.05); }
+  66%       { transform: translate(-20px,20px) scale(0.95); }
+}
+@keyframes blobMove2 {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33%       { transform: translate(-25px,25px) scale(1.08); }
+  66%       { transform: translate(20px,-15px) scale(0.93); }
+}
+.blob-1 { animation: blobMove1 12s ease-in-out infinite; }
+.blob-2 { animation: blobMove2 15s ease-in-out infinite; }
+
+/* --- Number count up --- */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.count-up { animation: countUp 400ms ease forwards; }
+
+/* --- Shimmer (skeleton loading) --- */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+  background-size: 200% auto;
+  animation: shimmer 1.5s linear infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* --- Fade In --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.fade-in { animation: fadeIn 200ms ease forwards; }

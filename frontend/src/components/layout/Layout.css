@@ -1,0 +1,114 @@
+.app-shell { --shell-sidebar: 180px; min-height: 100vh; background: var(--bg-base); }
+.app-shell.sidebar-collapsed { --shell-sidebar: 60px; }
+.app-sidebar { position: fixed; inset: 0 auto 0 0; z-index: 900; width: var(--shell-sidebar); background: var(--bg-surface); border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; }
+.app-brand { height: var(--topbar-height); display: flex; align-items: center; padding: 0 22px; font-size: 17px; font-weight: 700; letter-spacing: .04em; color: var(--text-primary); border-bottom: 1px solid var(--border-subtle); }
+.app-sidebar nav { flex: 1; padding: 18px 10px; overflow-y: auto; }
+.app-nav-link { width: 100%; display: flex; align-items: center; gap: 12px; padding: 11px 12px; margin: 2px 0; font-size: 12px; color: var(--text-secondary); border-radius: 3px; text-align: left; white-space: nowrap; }
+.app-nav-link svg { flex-shrink: 0; }
+.app-nav-link:hover { background: var(--bg-surface-raised); color: var(--text-primary); }
+.app-nav-link.active { background: var(--bg-surface-raised); color: var(--text-primary); font-weight: 600; }
+.sidebar-bottom { padding: 10px; border-top: 1px solid var(--border-subtle); }
+.is-collapsed .app-nav-link { justify-content: center; padding: 11px 0; }
+.is-collapsed .app-nav-link span { display: none; }
+.is-collapsed .app-brand { padding: 0; justify-content: center; }
+.app-topbar { position: fixed; inset: 0 0 auto var(--shell-sidebar); z-index: 950; height: var(--topbar-height); padding: 0 28px; display: flex; align-items: center; gap: 24px; border-bottom: 1px solid var(--border-subtle); background: var(--bg-surface); }
+.topbar-title { font-weight: 600; font-size: 13px; }
+.shell-search { display: flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 12px; }
+.shell-search kbd { font: inherit; color: var(--text-tertiary); font-size: 10px; border: 1px solid var(--border-subtle); padding: 1px 4px; border-radius: 3px; margin-left: 22px; }
+.topbar-actions { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.paper-label { color: var(--text-secondary); font-size: 11px; }
+.account-menu { position: relative; }
+.account-trigger { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.account-trigger span { max-width: 120px; overflow: hidden; text-overflow: ellipsis; }
+.account-dropdown { position: absolute; top: calc(100% + 18px); right: 0; min-width: 160px; background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 5px; border-radius: 4px; }
+.account-dropdown button { display: block; width: 100%; text-align: left; padding: 9px 10px; font-size: 12px; }
+.account-dropdown button:hover { background: var(--bg-surface-raised); }
+.notification-button { position: relative; }
+.notification-dot { position: absolute; top: 4px; right: 4px; width: 5px; height: 5px; border-radius: 50%; background: var(--price-down); }
+.app-main { margin-left: var(--shell-sidebar); padding: calc(var(--topbar-height) + 30px) 32px 40px; min-width: 0; }
+.connection-warning { padding: 10px 12px; margin-bottom: 20px; border: 1px solid var(--border-subtle); color: var(--price-down); font-size: 12px; }
+.app-topbar .mobile-menu, .navigation-backdrop { display: none; }
+.dashboard { max-width: 1200px; margin: 0 auto; }
+.page-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
+.page-heading h1 { font-size: 24px; margin-bottom: 4px; font-weight: 500; }
+.muted { color: var(--text-secondary); font-size: 12px; }
+.account-metrics { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); padding-bottom: 30px; border-bottom: 1px solid var(--border-subtle); }
+.account-metrics > div { padding: 0 24px; border-left: 1px solid var(--border-subtle); display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.account-metrics > div:first-child { padding-left: 0; border-left: 0; }
+.account-metrics span { font-size: 12px; color: var(--text-secondary); }
+.account-metrics strong { font: 500 clamp(16px,1.7vw,24px) 'JetBrains Mono',monospace; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.account-metrics a { font-size: 11px; }
+.overview-chart { padding: 26px 0 24px; border-bottom: 1px solid var(--border-subtle); }
+.section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+.section-heading h2 { font-size: 13px; font-weight: 500; }
+.section-heading > a { font-size: 11px; }
+.segmented { display: flex; gap: 3px; }
+.segmented button { padding: 5px 9px; border-radius: 3px; font-size: 11px; color: var(--text-secondary); }
+.segmented button[aria-pressed=true] { background: var(--bg-surface-raised); color: var(--text-primary); }
+.empty-chart { height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-secondary); font-size: 12px; }
+.empty-chart a { font-size: 12px; }
+.overview-activity { padding-top: 20px; }
+.plain-tabs { display: flex; gap: 20px; }
+.plain-tabs button { padding: 10px 0; color: var(--text-secondary); font-size: 12px; border-bottom: 1px solid transparent; }
+.plain-tabs button[aria-pressed=true] { color: var(--text-primary); border-bottom-color: var(--text-primary); }
+.plain-tabs span { margin-left: 5px; color: var(--text-tertiary); font-size: 10px; }
+.empty-section { padding: 40px 0; font-size: 12px; color: var(--text-secondary); }
+.stock-link { color: var(--text-primary); font-weight: 500; }
+.theme-options { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; max-width: 480px; margin: 22px 0 28px; }
+.theme-option { padding: 16px; border: 1px solid var(--border-subtle); border-radius: 4px; display: flex; gap: 10px; align-items: center; text-align: left; font-size: 13px; }
+.theme-option[aria-pressed=true] { border-color: var(--text-primary); }
+.theme-option .theme-selection { margin-left: auto; }
+.provider-form { max-width: 520px; display: flex; flex-direction: column; gap: 18px; }
+.provider-form label { display: flex; flex-direction: column; gap: 7px; font-size: 12px; }
+.provider-status { display: flex; flex-direction: column; gap: 6px; font-size: 11px; color: var(--text-secondary); }
+.provider-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.settings-shell { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 24px; }
+.settings-heading { margin-bottom: 18px; font-size: 20px; font-weight: 500; }
+.settings-nav { display: flex; flex-direction: column; align-items: stretch; gap: 4px; }
+.settings-nav button { padding: 10px 12px; text-align: left; font-size: 12px; border-radius: 3px; color: var(--text-secondary); }
+.settings-nav button[aria-pressed=true] { color: var(--text-primary); background: var(--bg-surface-raised); }
+.market-layout { display: grid; grid-template-columns: 280px minmax(0,1fr); gap: 24px; align-items: start; }
+.market-watchlist { min-width: 0; }
+.market-explorer { min-width: 0; }
+.watchlist-item { padding: 16px 0; border-bottom: 1px solid var(--border-subtle); display: flex; justify-content: space-between; gap: 12px; font-size: 12px; }
+.watchlist-item a { color: var(--text-primary); min-width: 0; }
+.watchlist-item a span { display: block; font-size: 10px; color: var(--text-secondary); margin-top: 4px; max-width: 170px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.watchlist-item > div { text-align: right; font-variant-numeric: tabular-nums; }
+.watchlist-item strong { font-weight: 500; }
+.watchlist-item small { display: block; margin-top: 4px; font-size: 10px; }
+.market-search { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border: 1px solid var(--border-subtle); border-radius: 3px; color: var(--text-secondary); }
+.market-search input { width: 160px; min-width: 0; background: transparent; border: 0; outline: 0; color: var(--text-primary); font: inherit; font-size: 12px; }
+.stock-name { font-size: 10px; margin-top: 4px; color: var(--text-secondary); max-width: 200px; overflow: hidden; text-overflow: ellipsis; }
+.market-trade-actions { display: flex; gap: 6px; justify-content: flex-end; }
+.market-table td:first-child { padding-left: 0; width: 25px; }
+.app-shell button:focus-visible, .app-shell a:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+@media(max-width:1100px) { .paper-label { display: none; } .account-metrics > div { padding: 0 14px; } .app-main { padding-right: 24px; padding-left: 24px; } }
+@media(max-width:1000px) { .stock-detail-columns { grid-template-columns: minmax(0,1fr) !important; } }
+@media(max-width:760px) {
+ .app-shell, .app-shell.sidebar-collapsed { --shell-sidebar: 0px; }
+ .app-topbar { padding: 0 16px; gap: 12px; }
+ .app-topbar .mobile-menu { display: inline-flex; }
+ .app-topbar .topbar-title { display: none; }
+ .shell-search span, .shell-search kbd { display: none; }
+ .topbar-actions { gap: 9px; }
+ .account-trigger span { max-width: 90px; }
+ .app-sidebar { transform: translateX(-100%); width: 190px; z-index: 2200; }
+ .app-sidebar.is-open { transform: translateX(0); }
+ .app-sidebar.is-collapsed .app-nav-link span { display: inline; }
+ .app-sidebar.is-collapsed .app-nav-link { justify-content: flex-start; padding: 11px 12px; }
+ .collapse-navigation { display: none; }
+ .navigation-backdrop { display: block; position: fixed; inset: 0; z-index: 2100; background: rgb(0 0 0 / 35%); }
+ .app-main { padding: calc(var(--topbar-height) + 22px) 16px 28px; }
+ .page-heading h1 { font-size: 21px; }
+ .account-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px 0; }
+ .account-metrics > div { padding: 0 16px; }
+ .account-metrics > div:nth-child(odd) { padding-left: 0; border-left: 0; }
+ .account-metrics strong { font-size: 17px; }
+ .plain-tabs { gap: 14px; }
+ .settings-shell, .market-layout { grid-template-columns: minmax(0,1fr); }
+ .settings-nav { flex-direction: row; overflow-x: auto; margin-bottom: 8px; }
+ .settings-nav button { white-space: nowrap; }
+ .market-watchlist { max-height: 420px; overflow-y: auto; }
+ .responsive-metrics { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
+ .responsive-columns { grid-template-columns: minmax(0,1fr) !important; }
+}
